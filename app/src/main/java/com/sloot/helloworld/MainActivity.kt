@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         diceImage = findViewById(R.id.dice_image)
         diceImageTwo = findViewById(R.id.dice_image_2)
 
+        val clearButton : Button = findViewById<Button>(R.id.clear_button)
+        clearButton.setOnClickListener{ clear()}
+
         // val countUpButton: Button = findViewById<Button>(R.id.count_up_button)
         // val restButton: Button = findViewById<Button>(R.id.reset_button)
         // countUpButton.setOnClickListener { countUp() }
@@ -46,6 +49,11 @@ class MainActivity : AppCompatActivity() {
         diceImageTwo.setImageResource(getRandomImage())
 
 
+    }
+
+    private fun clear (){
+        diceImage.setImageResource(R.drawable.empty_dice)
+        diceImageTwo.setImageResource(R.drawable.empty_dice)
     }
 
     /* private fun countUp() {
