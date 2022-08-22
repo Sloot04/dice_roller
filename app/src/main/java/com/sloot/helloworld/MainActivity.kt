@@ -9,7 +9,8 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var diceImage: ImageView
+    private lateinit var diceImage: ImageView
+    private lateinit var diceImageTwo: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val rollButton: Button = findViewById<Button>(R.id.roll_button)
         rollButton.setOnClickListener { rollDice() }
         diceImage = findViewById(R.id.dice_image)
+        diceImageTwo = findViewById(R.id.dice_image_2)
 
         // val countUpButton: Button = findViewById<Button>(R.id.count_up_button)
         // val restButton: Button = findViewById<Button>(R.id.reset_button)
@@ -25,8 +27,7 @@ class MainActivity : AppCompatActivity() {
         // restButton.setOnClickListener { rest() }
     }
 
-    private fun rollDice() {
-        // Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
+    private fun getRandomImage(): Int {
         val drawableResource = when ((1..6).random()) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
@@ -35,8 +36,14 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
+        return drawableResource
+    }
 
-        diceImage.setImageResource(drawableResource)
+    private fun rollDice() {
+        // Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
+
+        diceImage.setImageResource(getRandomImage())
+        diceImageTwo.setImageResource(getRandomImage())
 
 
     }
